@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
-from django.shortcuts import render 
+from django.shortcuts import render, redirect 
 from app_alumnos.models import Alumnos
 import random
 from app_alumnos.forms import CrearAlumnoForm, BuscarAlumnoForm
@@ -30,7 +30,7 @@ def alumno_nuevo(request):
                             email = data.get('email'))
             auto.save() 
             
-            return render(request, 'app_alumnos/home.html',{})
+            return redirect ('app_alumnos:alumno_buscar')
 
     return render(request, 'app_alumnos/alumno_nuevo.html', {'formulario':formulario}) #mi contexto ahora es el formulario
 
