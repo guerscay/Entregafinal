@@ -1,0 +1,20 @@
+{% extends "default.html" %} 
+
+{% block title_head %}
+Coolates
+{% endblock title_head %}
+
+{% block button %} Crear Alumno Nuevo {% endblock button %} 
+
+{% block main %}
+
+<form action="{% url 'app_alumnos:alumno_nuevo' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Crear Alumno</button>
+
+    {{formulario}} 
+    <input type="submit" value = 'Enviar Formulario'>
+
+</form> 
+
+{% endblock main %}

@@ -1,0 +1,31 @@
+{% extends "default.html" %}
+
+{% block title_head %}
+Coolates
+{% endblock title_head %}
+
+{% block button %} Buscar Alumno {% endblock button %}
+
+{% block main %}
+
+<h2>Buscar Alumno</h2>
+
+<p>
+    <form method="GET" action="{% url 'app_alumnos:alumno_buscar' %}">
+        {{ formulario.as_p }}  
+        <button type="submit">Buscar</button>
+    </form>
+</p>
+
+{% if db_alumnos %}
+    <h3>Resultados:</h3>
+    <ul>
+        {% for alumno in db_alumnos %}
+            <li>{{ alumno.nombre }} {{ alumno.apellido }} ({{ alumno.email }})</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron resultados.</p>
+{% endif %}
+
+{% endblock main %}
