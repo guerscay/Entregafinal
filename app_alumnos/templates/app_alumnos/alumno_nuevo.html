@@ -8,7 +8,7 @@ Coolates
 
 {% block main %}
 
-<form action="{% url 'app_alumnos:alumno_nuevo' %}" method="post">
+<form action= {% url 'app_alumnos:alumno_nuevo' %} method="post">
     {% csrf_token %}
     <button type="submit">Crear Alumno</button>
 

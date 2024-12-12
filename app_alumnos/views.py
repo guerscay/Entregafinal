@@ -4,7 +4,7 @@ from django.template import Template, Context, loader
 from django.shortcuts import render, redirect 
 from app_alumnos.models import Alumnos
 import random
-from app_alumnos.forms import CrearAlumnoForm, BuscarAlumnoForm
+from app_alumnos.forms import CrearAlumnoForm, BuscarAlumnoForm, EditarAlumnoForm
 
 
 #### PAGINA DE INICIO
@@ -24,11 +24,11 @@ def alumno_nuevo(request):
             
             data = formulario.cleaned_data
             
-            auto = Alumnos(nombre=data.get('nombre'), 
+            alumno = Alumnos(nombre=data.get('nombre'), 
                            apellido =data.get('apellido'), 
                            anio_nacimiento=data.get('anio_nacimiento'), 
                             email = data.get('email'))
-            auto.save() 
+            alumno.save() 
             
             return redirect ('app_alumnos:alumno_buscar')
 
@@ -76,3 +76,30 @@ def alumno_eliminar(request, id_alumno):
     alumno.delete()
     
     return render(request, 'app_alumnos/alumno_eliminar.html', {'alumno': alumno})
+
+#### EDITAR ALUMNO
+
+def alumno_editar(request, id_alumno):
+    
+    alumno = Alumnos.objects.get(id = id_alumno)
+    
+    formulario = EditarAlumnoForm(initial = {'nombre': alumno.nombre, 
+                                              'apellido': alumno.apellido, 
+                                              'anio_nacimiento': alumno.anio_nacimiento, 
+                                              'email':alumno.email})
+   
+    if request.method == 'POST':
+        formulario = EditarAlumnoForm(request.POST)   
+        if formulario.is_valid():
+            
+            data = formulario.cleaned_data
+            
+            alumno = Alumnos(nombre=data.get('nombre'), 
+                           apellido =data.get('apellido'), 
+                           anio_nacimiento=data.get('anio_nacimiento'), 
+                            email = data.get('email'))
+        alumno.save()
+        
+        return redirect ('app_alumnos:alumno_buscar')
+    
+    return render(request, 'app_alumnos/alumno_editar.html', {'formulario':formulario,'alumno': alumno})

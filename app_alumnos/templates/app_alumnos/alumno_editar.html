@@ -1,0 +1,18 @@
+{% extends "default.html" %} 
+
+{% block title_head %}
+Coolates
+{% endblock title_head %}
+
+{% block button %} Editar Alumno {% endblock button %} 
+
+{% block main %}
+
+<form action= {% url 'app_alumnos:alumno_editar' alumno.id %} method="post">
+    {% csrf_token %}
+    {{formulario}} 
+
+    <input type="submit" value = 'Guardar'>
+
+</form> 
+{% endblock main %}
