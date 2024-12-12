@@ -58,3 +58,11 @@ def alumno_buscar(request):
         'db_alumnos': resultado_alumno,
         'formulario': formulario_buscar,
     })
+
+#### VER UN ALUMNO
+
+def alumno_ver(request, id_alumno):
+    
+    alumno = Alumnos.objects.get(id = id_alumno)
+    
+    return render(request, 'app_alumnos/alumno_ver.html', {'alumno': alumno})

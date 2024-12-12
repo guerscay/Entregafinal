@@ -8,6 +8,9 @@ Coolates
 
 {% block main %}
 
+
+<a href={% url "app_alumnos:alumno_nuevo" %}> Crear Alumno Nuevo </a>
+
 <h2>Buscar Alumno</h2>
 
 <p>
@@ -16,12 +19,15 @@ Coolates
         <button type="submit">Buscar</button>
     </form>
 </p>
-
+path('alumno_nuevo/', views.alumno_nuevo, name = 'alumno_nuevo')
 {% if db_alumnos %}
     <h3>Resultados:</h3>
     <ul>
         {% for alumno in db_alumnos %}
-            <li>{{ alumno.nombre }} {{ alumno.apellido }} ({{ alumno.email }})</li>
+            <li>{{ alumno.nombre }} {{ alumno.apellido }} ({{ alumno.email }})</li> | <a href={% url "app_alumnos:alumno_ver" alumno.id %}> VER </a>
+
+
+
         {% endfor %}
     </ul>
 {% else %}

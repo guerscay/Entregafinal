@@ -1,0 +1,20 @@
+{% extends "default.html" %} 
+
+{% block title_head %}
+Coolates
+{% endblock title_head %}
+
+{% block header %} {{alumno}} {% endblock header %} 
+
+{% block main %}
+
+<ul>
+    
+    <li>Nombre: {{alumno.nombre}}</li>
+    <li>Apellido: {{alumno.apellido}}</li>
+    <li>Anio de Nacimiento: {{alumno.anio_nacimiento}}</li>
+    <li>email: {{alumno.email}}</li>
+
+</ul>
+
+{% endblock main %}
