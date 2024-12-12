@@ -66,3 +66,13 @@ def alumno_ver(request, id_alumno):
     alumno = Alumnos.objects.get(id = id_alumno)
     
     return render(request, 'app_alumnos/alumno_ver.html', {'alumno': alumno})
+
+#### ELIMINAR ALUMNO
+
+def alumno_eliminar(request, id_alumno):
+    
+    alumno = Alumnos.objects.get(id = id_alumno)
+    
+    alumno.delete()
+    
+    return render(request, 'app_alumnos/alumno_eliminar.html', {'alumno': alumno})

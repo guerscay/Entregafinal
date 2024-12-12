@@ -24,7 +24,9 @@ path('alumno_nuevo/', views.alumno_nuevo, name = 'alumno_nuevo')
     <h3>Resultados:</h3>
     <ul>
         {% for alumno in db_alumnos %}
-            <li>{{ alumno.nombre }} {{ alumno.apellido }} ({{ alumno.email }})</li> | <a href={% url "app_alumnos:alumno_ver" alumno.id %}> VER </a>
+            <li>{{ alumno.nombre }} {{ alumno.apellido }} ({{ alumno.email }})</li> 
+            | <a href={% url "app_alumnos:alumno_ver" alumno.id %}> VER </a>
+            | <a href={% url "app_alumnos:alumno_eliminar" alumno.id %}> Eliminar </a>
 
 
 
