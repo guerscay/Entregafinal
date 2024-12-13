@@ -1,0 +1,18 @@
+{% extends "default.html" %}
+{% block title_head %}
+COOLates
+{% endblock title_head %}
+{% block h1_header %}Update Profe{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "app_profes:profe_update" profe.id %} method="post">
+    {% csrf_token %}
+        
+    {{form}}
+  
+    <input type="submit" value='Update'>
+
+  
+</form>
+{% endblock main %}
+

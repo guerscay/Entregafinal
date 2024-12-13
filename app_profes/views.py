@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
+
 from app_profes.models import Profes
 from django.urls import reverse_lazy
 
@@ -28,3 +29,15 @@ class InfoProfe(DetailView):
     # context_object_name = 'profe' no es necesario poner esto porque internamente 
     # django genera el contect_object_name como el nombre del modelo pero en minuscula
   
+# Modificar profes (Editar)
+class UpdateProfe(UpdateView):
+    model = Profes
+    template_name = "app_profes/profe_update.html"
+    fields = ['nombre', 'apellido', 'certificacion', 'horas_semana', 'fecha_ingreso']
+    success_url = reverse_lazy('app_profes:profes_buscar')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Agregar el objeto profe al contexto
+        context['profe'] = self.get_object()
+        return context
