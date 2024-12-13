@@ -13,9 +13,9 @@ Antes de utilizar el formulario se pobló la base de datos con alu,nos creados c
 Se prueba la parte de admin y permisos con lo siguiente: 
 
 ## SUPERUSER
-username = guerr
-email = guerra.scarlet87@gmail.com
-password = 111111
+username = admin
+email = admin@admin.com
+password = admin
 
 ## User
 username = juanita
