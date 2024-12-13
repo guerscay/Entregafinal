@@ -14,7 +14,7 @@ COOLates
     {% for profe in db_profes %}
     <li>
         {{profe}}
-       
+       <a href={% url "app_profes:profe_info" profe.id %}> + Info </a>
     </li>
     {% endfor %}
 </ul>

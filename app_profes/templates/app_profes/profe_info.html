@@ -1,0 +1,19 @@
+{% extends "default.html" %}
+{% block title_head %}
+COOLates
+{% endblock title_head %}
+
+{% block h1_header %}{{profes}}{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>Nombre: {{profes.nombre}}</li>
+    <li>Apellido: {{profes.apellido}}</li>
+    <li>Certificacion: {{profes.certificacion}}</li>
+    <li>Horas por Semana: {{profes.horas_semana}}</li>
+    <li>Fecha de ingreso: {{profes.fecha_ingreso}}</li>
+
+</ul>
+
+{% endblock main %}
