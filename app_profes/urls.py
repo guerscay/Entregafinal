@@ -7,5 +7,6 @@ urlpatterns = [
     path('profes/', views.ListaProfes.as_view(), name = 'profes_buscar'),
     path('profes/crear', views.CrearProfe.as_view(), name = 'profe_nuevo'),
     path('profes/info/<int:pk>', views.InfoProfe.as_view(), name = 'profe_info'),
-    path('profes/edit/<int:pk>', views.UpdateProfe.as_view(), name='profe_update')
+    path('profes/edit/<int:pk>', views.UpdateProfe.as_view(), name='profe_update'),
+    path('profes/delete/<int:pk>', views.BorrarProfe.as_view(), name='profe_borrar')
 ]

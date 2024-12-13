@@ -16,6 +16,7 @@ COOLates
         {{profe}}
        <a href={% url "app_profes:profe_info" profe.id %}> + Info </a>
        <a href={% url "app_profes:profe_update" profe.id %}> Update </a>
+       <a href={% url "app_profes:profe_borrar" profe.id %}> Borrar </a>
     </li>
     {% endfor %}
 </ul>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 
 from app_profes.models import Profes
@@ -41,3 +41,9 @@ class UpdateProfe(UpdateView):
         # Agregar el objeto profe al contexto
         context['profe'] = self.get_object()
         return context
+
+# Borrar profes (Delete)
+class BorrarProfe(DeleteView):
+    model = Profes
+    template_name = "app_profes/profe_borrar.html"
+    success_url = reverse_lazy('app_profes:profes_buscar')
