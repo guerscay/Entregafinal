@@ -1,0 +1,36 @@
+{% extends "default.html" %}
+
+{% block title_head %}
+COOLates
+{% endblock title_head %}
+{% block h1_header %} Profes {% endblock h1_header %}
+
+{% block main %}
+
+{% comment %} <a href={% url "app_profes:profe_nuevo" %}>Crear Profe</a>
+
+<p>
+    <form action={% url "app_profes:profes_buscar" %}>
+        
+        {{formulario}}
+    
+        <input type="submit" value='Buscar'>
+    
+    </form>
+</p> {% endcomment %}
+
+{% if db_profes %}
+<ul>
+    {% for profe in db_profes %}
+    <li>
+        {{profe}}
+        {% comment %} | <a href={% url 'inicio:ver_auto' auto.id %}>Ver</a>
+        | <a href={% url 'inicio:editar_auto' auto.id %}>Editar</a>
+        | <a href={% url 'inicio:eliminar_auto' auto.id %}>Eliminar</a> {% endcomment %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encuentran resultados.</p>
+{% endif %}
+{% endblock main %}
