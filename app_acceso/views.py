@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.contrib.auth import login
-from app_acceso.forms import Registro_Usuario, EditarPerfil
+from app_acceso.forms import Registro_Usuario, EditarPerfil, EditarAvatar
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from app_acceso.models import AccesoInfoUsuario
 
 
 # LOGIN DE USUARIOS
@@ -17,8 +18,12 @@ def acceso_login(request):
         form = AuthenticationForm(request, data = request.POST)
         
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
+            usuario = form.get_user()
+            
+            login(request, usuario)
+            
+            AccesoInfoUsuario.objects.get_or_create(user = usuario)
+            
             return redirect ('app_alumnos:home_login')
     
     
@@ -46,19 +51,30 @@ def acceso_perfil (request):
 
 @login_required
 def acceso_perfil_editar(request):
-    formulario = EditarPerfil(instance = request.user)
+    user = request.user
+    info_usuario = user.accesoinfousuario  # Acceso al modelo relacionado
+    
+    # Formularios para User y AccesoInfoUsuario
+    formulario_user = EditarPerfil(instance=user)
+    formulario_avatar = EditarAvatar(instance=info_usuario)
     
     if request.method == 'POST':
-        formulario = EditarPerfil(request.POST,instance = request.user )
-        if formulario.is_valid:
-            formulario.save()
+        formulario_user = EditarPerfil(request.POST, instance=user)
+        formulario_avatar = EditarAvatar(request.POST, request.FILES, instance=info_usuario)
         
-        return redirect('app_acceso:acceso_perfil')
-               
-    return render (request, 'app_acceso/acceso_perfil_editar.html', {'form': formulario})
+        if formulario_user.is_valid() and formulario_avatar.is_valid():
+            formulario_user.save()
+            formulario_avatar.save()
+            return redirect('app_acceso:acceso_perfil')
+    
+    return render(request, 'app_acceso/acceso_perfil_editar.html', {
+        'form_user': formulario_user,
+        'form_avatar': formulario_avatar,
+    })
+
+
 
 # se hace el cambio de password por clase basada en vista
-
 class AccesoPassword(LoginRequiredMixin,PasswordChangeView):
     template_name = 'app_acceso/acceso_password.html'
     success_url = reverse_lazy('app_acceso:acceso_login')
