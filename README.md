@@ -30,5 +30,8 @@ password = chispita47
 username = gremlina
 password = pollito1
 
+username = clarita
+password = clar2323
+
 
 

@@ -3,6 +3,9 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 from django.contrib.auth import login
 from app_acceso.forms import Registro_Usuario, EditarPerfil
 from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 # LOGIN DE USUARIOS
@@ -53,3 +56,9 @@ def acceso_perfil_editar(request):
         return redirect('app_acceso:acceso_perfil')
                
     return render (request, 'app_acceso/acceso_perfil_editar.html', {'form': formulario})
+
+# se hace el cambio de password por clase basada en vista
+
+class AccesoPassword(LoginRequiredMixin,PasswordChangeView):
+    template_name = 'app_acceso/acceso_password.html'
+    success_url = reverse_lazy('app_acceso:acceso_login')
