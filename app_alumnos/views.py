@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from app_alumnos.models import Alumnos
 import random
 from app_alumnos.forms import CrearAlumnoForm, BuscarAlumnoForm, EditarAlumnoForm
+from django.contrib.auth.decorators import login_required
 
 
 #### PAGINA DE INICIO
@@ -12,28 +13,8 @@ from app_alumnos.forms import CrearAlumnoForm, BuscarAlumnoForm, EditarAlumnoFor
 def home(request):
     return render(request, 'app_alumnos/home.html', {})
 
-#### CREACION DE UN ALUMNO NUEVO
-
-def alumno_nuevo(request):
-     
-    formulario = CrearAlumnoForm()
-    
-    if request.method == 'POST':
-        formulario = CrearAlumnoForm(request.POST)   
-        if formulario.is_valid():
-            
-            data = formulario.cleaned_data
-            
-            alumno = Alumnos(nombre=data.get('nombre'), 
-                           apellido =data.get('apellido'), 
-                           anio_nacimiento=data.get('anio_nacimiento'), 
-                            email = data.get('email'))
-            alumno.save() 
-            
-            return redirect ('app_alumnos:alumno_buscar')
-
-    return render(request, 'app_alumnos/alumno_nuevo.html', {'formulario':formulario}) #mi contexto ahora es el formulario
-
+def home_login(request):
+    return render(request, 'app_alumnos/home_login.html', {})
 
 #### BUSCAR UN ALUMNO
 
@@ -67,29 +48,17 @@ def alumno_ver(request, id_alumno):
     
     return render(request, 'app_alumnos/alumno_ver.html', {'alumno': alumno})
 
-#### ELIMINAR ALUMNO
+# no quiero que cualquiera pueda crear/modificar/eliminar a un alumno. Se limita. 
 
-def alumno_eliminar(request, id_alumno):
-    
-    alumno = Alumnos.objects.get(id = id_alumno)
-    
-    alumno.delete()
-    
-    return render(request, 'app_alumnos/alumno_eliminar.html', {'alumno': alumno})
+#### CREACION DE UN ALUMNO NUEVO
 
-#### EDITAR ALUMNO
-
-def alumno_editar(request, id_alumno):
+@login_required
+def alumno_nuevo(request):
+     
+    formulario = CrearAlumnoForm()
     
-    alumno = Alumnos.objects.get(id = id_alumno)
-    
-    formulario = EditarAlumnoForm(initial = {'nombre': alumno.nombre, 
-                                              'apellido': alumno.apellido, 
-                                              'anio_nacimiento': alumno.anio_nacimiento, 
-                                              'email':alumno.email})
-   
     if request.method == 'POST':
-        formulario = EditarAlumnoForm(request.POST)   
+        formulario = CrearAlumnoForm(request.POST)   
         if formulario.is_valid():
             
             data = formulario.cleaned_data
@@ -98,8 +67,52 @@ def alumno_editar(request, id_alumno):
                            apellido =data.get('apellido'), 
                            anio_nacimiento=data.get('anio_nacimiento'), 
                             email = data.get('email'))
+            alumno.save() 
+            
+            return redirect ('app_alumnos:alumno_buscar')
+
+    return render(request, 'app_alumnos/alumno_nuevo.html', {'formulario':formulario}) #mi contexto ahora es el formulario
+
+
+#### EDITAR ALUMNO
+
+@login_required
+def alumno_editar(request, id_alumno):
+    
+    alumno = Alumnos.objects.get(id = id_alumno)
+    
+    formulario = EditarAlumnoForm(initial = {
+        'nombre': alumno.nombre, 
+        'apellido': alumno.apellido,
+        'anio_nacimiento': alumno.anio_nacimiento,
+        'email':alumno.email
+        })
+   
+    if request.method == 'POST':
+        formulario = EditarAlumnoForm(request.POST)   
+        if formulario.is_valid():
+            
+            data = formulario.cleaned_data
+            
+            alumno.nombre = data.get('nombre')
+            alumno.apellido = data.get('apellido')
+            alumno.anio_nacimiento = data.get('anio_nacimiento')
+            alumno.email = data.get('email')
+            
         alumno.save()
         
         return redirect ('app_alumnos:alumno_buscar')
     
     return render(request, 'app_alumnos/alumno_editar.html', {'formulario':formulario,'alumno': alumno})
+
+
+#### ELIMINAR ALUMNO
+
+@login_required
+def alumno_eliminar(request, id_alumno):
+    
+    alumno = Alumnos.objects.get(id = id_alumno)
+    
+    alumno.delete()
+    
+    return render(request, 'app_alumnos/alumno_eliminar.html', {'alumno': alumno})
