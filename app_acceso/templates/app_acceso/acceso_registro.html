@@ -2,20 +2,20 @@
 {% block title_head %}
 COOLates
 {% endblock title_head %}
-{% block h1_header %}Log in {% endblock h1_header %}
+{% block h1_header %}Registrate! {% endblock h1_header %}
 
 {% block h2_header %}
 <h2 class="masthead-subheading mb-0"> Bienvenido </h2>
-<a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll"> Log In </a>
+<a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll"> Registrate! </a>
 {% endblock h2_header %}
 
 {% block main %}
-<form action={% url "app_acceso:acceso_login" %} method="post">
+<form action={% url "app_acceso:acceso_registro" %} method="post">
     {% csrf_token %}
         
     {{form}}
 
-    <input type="submit" value='Log in'>
+    <input type="submit" value='Registrate!'>
 
 </form>
 {% endblock main %}

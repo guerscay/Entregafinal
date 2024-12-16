@@ -23,3 +23,12 @@ password = 2347cool
 staff status = staff
 permisos = Staff   - Grupo de permisos creados para el staff del estudio
 
+## User
+username = higuclap
+password = chispita47
+
+username = gremlina
+password = pollito1
+
+
+

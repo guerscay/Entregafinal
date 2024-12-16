@@ -26,15 +26,12 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href= {% url "app_alumnos:home" %}  >HOME</a></li>
                         <li class="nav-item"><a class="nav-link" href= {% url "app_alumnos:alumno_buscar" %}>Alumnos</a></li>
-                        <li class="nav-item"><a class="nav-link" href= {% url "app_profes:profes_buscar" %}>Profes</a></li>
-
-                    
+                        <li class="nav-item"><a class="nav-link" href= {% url "app_profes:profes_buscar" %}>Profes</a></li>                
                         
-
                         {% if request.user.is_authenticated %}
                         
                         <li class="nav-item">
-                            <li class="nav-item"><a class="nav-link" href= '#'>{{request.user.username}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href= {% url 'app_acceso:acceso_perfil' %}>{{request.user.username}}</a></li>
                             <form action="{% url 'app_acceso:acceso_logout' %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="nav-link btn btn-link" style="border: none; padding: 0; background: none; color: #ff0080;">
@@ -45,12 +42,12 @@
                         {% else %}
 
                         <li class="nav-item"><a class="nav-link" href= {% url "app_acceso:acceso_login" %}>Log In</a></li> 
-                        <li class="nav-item"><a class="nav-link" href= '#'> Registrarse </a></li>
+                        <li class="nav-item"><a class="nav-link" href= {% url "app_acceso:acceso_registro" %}> Registrarse </a></li>
                         
                         {% endif %}
                         
 
-                        <!-- Log Out Button -->
+                        
                         
                         </li>
                     </ul>
