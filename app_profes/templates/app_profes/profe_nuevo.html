@@ -5,7 +5,7 @@ COOLates
 {% block h1_header %}Crear Profe{% endblock h1_header %}
 
 {% block main %}
-<form action={% url "app_profes:profe_nuevo" %} method="post">
+<form action={% url "app_profes:profe_nuevo" %} method="post" enctype = "multipart/form-data">
     {% csrf_token %}
         
     {{form}}

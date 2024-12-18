@@ -3,17 +3,31 @@
 COOLates
 {% endblock title_head %}
 
-{% block h1_header %}{{profes}}{% endblock h1_header %}
+{% block h1_header %}
+<h1>{{ profes }}</h1>
+{% endblock h1_header %}
+
+{% block h2_header %}
+<div style="text-align: center; margin: 20px 0;">
+    {% if profes.foto %}
+        <img 
+            src="{{ profes.foto.url }}" 
+            alt="Cónocé a {{ profes.nombre }}" 
+            style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"
+        >
+        <p style="margin-top: 10px;">Cónocé a tu profe: {{ profes.nombre }}</p>
+    {% else %}
+        <p>El profesor no tiene foto</p>
+    {% endif %}
+</div>
+{% endblock h2_header %}
 
 {% block main %}
-
 <ul>
-    <li>Nombre: {{profes.nombre}}</li>
-    <li>Apellido: {{profes.apellido}}</li>
-    <li>Certificacion: {{profes.certificacion}}</li>
-    <li>Horas por Semana: {{profes.horas_semana}}</li>
-    <li>Fecha de ingreso: {{profes.fecha_ingreso}}</li>
-
+    <li>Nombre: {{ profes.nombre }}</li>
+    <li>Apellido: {{ profes.apellido }}</li>
+    <li>Certificación: {{ profes.certificacion }}</li>
+    <li>Horas por Semana: {{ profes.horas_semana }}</li>
+    <li>Fecha de ingreso: {{ profes.fecha_ingreso }}</li>
 </ul>
-
 {% endblock main %}

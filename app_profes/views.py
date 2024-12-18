@@ -28,14 +28,14 @@ class InfoProfe(DetailView):
 class CrearProfe(LoginRequiredMixin,CreateView):
     model = Profes  # eso viene del model, entonces se trae igual
     template_name = "app_profes/profe_nuevo.html"
-    fields = ['nombre', 'apellido', 'certificacion', 'horas_semana', 'fecha_ingreso']   # los campos de mi formulario
+    fields = ['nombre', 'apellido', 'certificacion', 'horas_semana', 'fecha_ingreso', 'foto']   # los campos de mi formulario
     success_url = reverse_lazy('app_profes:profes_buscar')
      
 # Modificar profes (Editar)
 class UpdateProfe(LoginRequiredMixin, UpdateView):
     model = Profes
     template_name = "app_profes/profe_update.html"
-    fields = ['nombre', 'apellido', 'certificacion', 'horas_semana', 'fecha_ingreso']
+    fields = ['nombre', 'apellido', 'certificacion', 'horas_semana', 'fecha_ingreso', 'foto']
     success_url = reverse_lazy('app_profes:profes_buscar')
 
     def get_context_data(self, **kwargs):
