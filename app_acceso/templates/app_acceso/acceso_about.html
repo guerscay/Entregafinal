@@ -1,0 +1,47 @@
+{% extends "default.html" %}
+{% load static %} <!-- Importante: cargar la biblioteca estática -->
+
+{% block title_head %}
+COOLates - About Us
+{% endblock title_head %}
+
+{% block h2_header %}
+<h2 class="masthead-subheading mb-0"> About Us </h2>
+
+<!-- Mostrar la imagen -->
+<div style="text-align: center; margin: 20px 0;">
+    <img 
+        src="{% static 'assets/img/about_us2.jpg' %}" 
+        alt="About Us - COOLates" 
+        style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover;"
+    >
+</div>
+
+<!-- Texto explicativo -->
+<div style="text-align: center; margin-top: 10px;">
+    <p>
+        En <strong>COOLates</strong>, nos apasiona el bienestar físico y emocional. Nuestra fundadora, Scarlet Guerra, 
+        se entrenó con los mejores profesores de pilates y danza de Argentina y Latinoamérica, trayendo al estudio
+        toda la magia de la prepa física rusa, pilates para bailarines, pilates para recuperación de lesiones, y nuestro nuevo
+        pack especial para atletas o profesionales "Volvé al Ruedo". 
+    </p>
+    <p>
+        Agendá una clase gratuita y vení a conocernos.
+        <strong>COOLates</strong> trabaja cada día para brindarte las mejores clases, adaptadas a tus necesidades. 
+        ¡Únete a nuestra comunidad y descubre todo lo que puedes lograr!
+    </p>
+    <p>
+       En <strong>COOLates</strong> tenemos como pilar que te sientas FUERTE - SANA - FLEXIBLE (FSF)
+       Nuestro valor más importante es la comunidad! En equipo se logra mucho más!!!!
+       Por eso, nuestras dlases se dictan en Español/ Inglés/ Francés o Ruso! Para que nadie se pierda de nada 
+        ¡Únete a nuestra comunidad y descubre todo lo que puedes lograr!
+    </p>
+
+
+
+</div>
+{% endblock h2_header %}
+
+{% block main %}
+<!-- Puedes agregar más contenido aquí si lo necesitas -->
+{% endblock main %}

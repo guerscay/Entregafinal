@@ -8,6 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from app_acceso.models import AccesoInfoUsuario
 
+def acceso_about (request):
+    return render(request, 'app_acceso/acceso_about.html', {} )
 
 # LOGIN DE USUARIOS
 def acceso_login(request):

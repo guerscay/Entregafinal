@@ -6,6 +6,7 @@ El estudio se llama COOLates, y esta es su pagina de presentacion, con una secci
 La rama principal se llama 'pilates', mientras que las app creadas se llaman
 - app_alumnos: maneja la DB de alumnos del estudio
 - app_profes: maneja la DB de profesores
+    Esta app se enfoca en clases basadas en vistas
 - app_acceso: maneja los accesos y perfiles de usuarios (dueños o gerentes del estudio)
 
 Se prueba la parte de admin y permisos con lo siguiente: 

@@ -11,6 +11,7 @@ urlpatterns = [
     path ('registro/', views.acceso_registro, name = 'acceso_registro'),
     path('perfil', views.acceso_perfil, name = 'acceso_perfil' ),
     path('perfil/editar', views.acceso_perfil_editar, name = 'acceso_perfil_editar' ),
-    path('perfil/cambiar-password', views.AccesoPassword.as_view(), name = 'acceso_password' )
+    path('perfil/cambiar-password', views.AccesoPassword.as_view(), name = 'acceso_password' ),
+    path('about-us/',views.acceso_about, name = 'acceso_about')
 
 ]
