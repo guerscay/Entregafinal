@@ -41,3 +41,5 @@ apellido = bodan
 Algunos usuarios tienen su propio avatar, al igual que algunos profesores
 La pagina se encuentra organizada de tal forma que sólo los usuarios logueados puedan crear/modificar/eliminar profesores o alumnos
 Los usuarios pueden pos sí sólos cambiar su clave
+Se utilizaron imagenes libres o propias para el proyecto, y se utilizó el bootstrap: 
+        https://startbootstrap.com/theme/one-page-wonder
