@@ -5,17 +5,33 @@ COOLates
 
 {% block h2_header %}
 <h2 class="masthead-subheading mb-0"> Bienvenid@ </h2>
-<a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll"> {{request.user.username}} </a>
+
+<!-- Mostrar el avatar -->
+<div style="text-align: center; margin: 20px 0;">
+
+    {% if request.user.accesoinfousuario.avatar %}
+        <img 
+            src="{{ request.user.accesoinfousuario.avatar.url }}" 
+            alt="Avatar de {{ request.user.username }}" 
+            style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"
+        >
+    {% else %}
+        <p>No tienes un avatar configurado.</p>
+    {% endif %}
+</div>
+
+<!-- Nombre del usuario -->
+<a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll"> 
+      
+    {{ request.user.username }} </a>
 {% endblock h2_header %}
 
 {% block main %}
 <ul>
-
-    <li> Usuario:   {{request.user.username}} </li>
-    <li> Nombre:    {{request.user.first_name}} </li>
-    <li> Apellido:  {{request.user.last_name}} </li>
-    <li> Email:     {{request.user.email}} </li>
-
+    <li> Usuario:   {{ request.user.username }} </li>
+    <li> Nombre:    {{ request.user.first_name }} </li>
+    <li> Apellido:  {{ request.user.last_name }} </li>
+    <li> Email:     {{ request.user.email }} </li>
 </ul>
 <p>
     <a href={% url "app_acceso:acceso_perfil_editar" %}> Editar mis datos </a>
@@ -24,5 +40,4 @@ COOLates
 <p>
     <a href={% url "app_acceso:acceso_password" %}> Cambiar clave </a>
 </p>
-
 {% endblock main %}

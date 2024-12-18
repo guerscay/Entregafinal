@@ -37,12 +37,14 @@ def acceso_registro(request):
     
     if request.method == 'POST':
         formulario = Registro_Usuario(request.POST)
-        if formulario.is_valid:
+        if formulario.is_valid():
             formulario.save()
+            return redirect('app_acceso:acceso_login')
         
-        return redirect('app_acceso:acceso_login')
-               
-    return render (request, 'app_acceso/acceso_registro.html', {'form':formulario})
+        else:
+            print(formulario.errors)  
+    return render(request, 'app_acceso/acceso_registro.html', {'form': formulario})
+
 
 # PERFIL DEL USUARIO
 @login_required

@@ -33,5 +33,10 @@ password = pollito1
 username = clarita
 password = clar2323
 
-
+username = fbodan
+email = fbodan@hotmail.com
+clave = fabi2323
+repetir = fabi2323
+nombre = fabiola
+apellido = bodan
 

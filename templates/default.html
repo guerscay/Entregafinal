@@ -31,7 +31,18 @@
                         {% if request.user.is_authenticated %}
                         
                         <li class="nav-item">
-                            <li class="nav-item"><a class="nav-link" href= {% url 'app_acceso:acceso_perfil' %}>{{request.user.username}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href= {% url 'app_acceso:acceso_perfil' %}>
+                                
+                                {% if request.user.accesoinfousuario.avatar %}
+                                <img 
+                                    src="{{ request.user.accesoinfousuario.avatar.url }}" 
+                                    alt="Avatar de {{ request.user.username }}" 
+                                    style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;"
+                                >
+                        
+                            {% endif %}
+                                                               
+                                {{request.user.username}}</a></li>
                             <form action="{% url 'app_acceso:acceso_logout' %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="nav-link btn btn-link" style="border: none; padding: 0; background: none; color: #ff0080;">
