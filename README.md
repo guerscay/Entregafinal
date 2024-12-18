@@ -3,12 +3,10 @@
 Para esta entrega se continua con la idea de crear algo que sea útil para manejar la informacion de alumnos de un estudio de pilates. 
 El estudio se llama COOLates, y esta es su pagina de presentacion, con una seccion especial para crear y buscar alumnos
 
-La rama principal se llama 'pilates', mientras que la app creada se llama 'app_alumnos'
-
-Se trabaja con dos formularios: creación y busqueda ('CrearAlumnoForm' & 'BuscarAlumnoForm')
-Se construyen dos html: creacion y busqueda ('alumno_nuevo' & 'alumno_buscar')
-Se construyen dos views: creacion y busqueda ('alumno_nuevo' & 'alumno_buscar') y una adicional para el home
-Antes de utilizar el formulario se pobló la base de datos con alu,nos creados con random choice, por eso todos se llaman casi igual :-)
+La rama principal se llama 'pilates', mientras que las app creadas se llaman
+- app_alumnos: maneja la DB de alumnos del estudio
+- app_profes: maneja la DB de profesores
+- app_acceso: maneja los accesos y perfiles de usuarios (dueños o gerentes del estudio)
 
 Se prueba la parte de admin y permisos con lo siguiente: 
 
@@ -40,3 +38,6 @@ repetir = fabi2323
 nombre = fabiola
 apellido = bodan
 
+Algunos usuarios tienen su propio avatar, al igual que algunos profesores
+La pagina se encuentra organizada de tal forma que sólo los usuarios logueados puedan crear/modificar/eliminar profesores o alumnos
+Los usuarios pueden pos sí sólos cambiar su clave
