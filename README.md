@@ -8,6 +8,7 @@ La rama principal se llama 'pilates', mientras que las app creadas se llaman
 - app_profes: maneja la DB de profesores
     Esta app se enfoca en clases basadas en vistas
 - app_acceso: maneja los accesos y perfiles de usuarios (dueños o gerentes del estudio)
+- app_mensaje: maneja la visualización y creación de mensajes en el muro
 
 Se prueba la parte de admin y permisos con lo siguiente: 
 
@@ -44,6 +45,8 @@ La pagina se encuentra organizada de tal forma que sólo los usuarios logueados 
 Los usuarios pueden pos sí sólos cambiar su clave
 Se utilizaron imagenes libres para el proyecto, y se utilizó el bootstrap: 
         https://startbootstrap.com/theme/one-page-wonder
+
+Se trabaja la parte de mensajería como un muro donde todos pueden publicar, siempre y cuando estén logueados
 
 Se continuó trabajando sobre lo entregado en la última asignacion por lo que se dividió la página en alumnos/profesores/gerentes.
 A futuro se desea modificar la página para que:
