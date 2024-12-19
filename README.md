@@ -52,3 +52,6 @@ Se continuó trabajando sobre lo entregado en la última asignacion por lo que s
 A futuro se desea modificar la página para que:
 - Puedan tener acceso los alumnos y enviar mensajes al muro, comprar packs de clases y conocer a los profesores
 - Se pueda visualizar los packs de clases que se ofrecen con cantidad de clases, vigencia, precio y nivel
+
+
+El link al video explicativo de la pagina es: https://drive.google.com/file/d/1Nc0LRhQFA3TfpeBYPOoUKhlnG_M4WYEp/view?usp=sharing

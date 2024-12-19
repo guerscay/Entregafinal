@@ -77,8 +77,6 @@ def acceso_perfil_editar(request):
     })
 
 
-
-# se hace el cambio de password por clase basada en vista
-class AccesoPassword(LoginRequiredMixin,PasswordChangeView):
+class AccesoPassword(LoginRequiredMixin, PasswordChangeView):
     template_name = 'app_acceso/acceso_password.html'
     success_url = reverse_lazy('app_acceso:acceso_login')
