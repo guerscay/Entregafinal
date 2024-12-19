@@ -1,0 +1,24 @@
+{% extends "default.html" %}
+
+{% block title_head %}
+COOLates
+{% endblock title_head %}
+
+{% block h2_header %}
+<h2 class="masthead-subheading mb-0"> Muro </h2>
+{% endblock h2_header %}
+
+{% block main %}
+<div style="text-align: center; margin: 20px;">
+    <a class="btn btn-primary" href="{% url 'app_muro:muro_escribir' %}"> Escribir un nuevo mensaje</a>
+</div>
+
+<div class="muro-mensajes">
+    {% for mensaje in mensajes %}
+        <div style="border: 1px solid #ddd; padding: 15px; margin: 10px;">
+            <p><strong>{{ mensaje.autor.username }}</strong> <em>{{ mensaje.fecha_publicacion|date:"d M Y H:i" }}</em></p>
+            <p>{{ mensaje.contenido }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock main %}

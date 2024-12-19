@@ -39,8 +39,13 @@ repetir = fabi2323
 nombre = fabiola
 apellido = bodan
 
-Algunos usuarios tienen su propio avatar, al igual que algunos profesores
+Los usuarios tienen su propio avatar, al igual que los profesores
 La pagina se encuentra organizada de tal forma que sólo los usuarios logueados puedan crear/modificar/eliminar profesores o alumnos
 Los usuarios pueden pos sí sólos cambiar su clave
-Se utilizaron imagenes libres o propias para el proyecto, y se utilizó el bootstrap: 
+Se utilizaron imagenes libres para el proyecto, y se utilizó el bootstrap: 
         https://startbootstrap.com/theme/one-page-wonder
+
+Se continuó trabajando sobre lo entregado en la última asignacion por lo que se dividió la página en alumnos/profesores/gerentes.
+A futuro se desea modificar la página para que:
+- Puedan tener acceso los alumnos y enviar mensajes al muro, comprar packs de clases y conocer a los profesores
+- Se pueda visualizar los packs de clases que se ofrecen con cantidad de clases, vigencia, precio y nivel

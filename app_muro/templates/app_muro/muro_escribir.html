@@ -1,0 +1,17 @@
+{% extends "default.html" %}
+
+{% block title_head %}
+COOLates 
+{% endblock title_head %}
+
+{% block h2_header %}
+<h2 class="masthead-subheading mb-0">Escribir un Nuevo Mensaje</h2>
+{% endblock h2_header %}
+
+{% block main %}
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock main %}
